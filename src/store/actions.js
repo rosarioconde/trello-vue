@@ -39,5 +39,20 @@ export default {
     addColumn({ commit }, { board, name }) {
         API.postList(board, name)
             .then((column) => commit(types.ADD_COLUMN, { column }))
+    },
+
+    addTask({ commit }, { list, title }) {
+        API.postTask(list, title)
+            .then((task) => commit(types.ADD_TASK, { task }))
+    },
+
+    deleteTask() {
+        API.deleteTask(taskId)
+            .then(() => (types.DELETE_TASK), { taskId })
+    },
+
+    markAsCompleted() {
+        API.completeTask(task.id)
+            .then(() => commit(types.MARK_AS_COMPLETED, { task }))
     }
 }
